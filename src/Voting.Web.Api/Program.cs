@@ -9,6 +9,7 @@ namespace Voting.Web.Api
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseUrls("http://*:5000", "https://*:5001")
                 .UseStartup<Startup>()
                 .Build();
 
