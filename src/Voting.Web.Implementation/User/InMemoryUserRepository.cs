@@ -106,7 +106,6 @@
             if (existingUser != null)
             {
                 // This is SERIOUSLY INSECURE and meant as an easy implementation for demonstrating a functioning application.  Use bcrypt or a secure, well-evaluated alternative in a real implementation.
-                //
                 existingUser.PasswordHash = password;
             }
         }
