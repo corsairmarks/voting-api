@@ -1,11 +1,15 @@
 namespace Voting.Web.Api
 {
     using System;
+    using Implementation;
+    using Implementation.Ballot;
     using Implementation.Session;
     using Implementation.User;
     using Library.Authentication;
+    using Library.Ballot;
     using Library.Session;
     using Library.User;
+    using Library.Vote;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -51,6 +55,12 @@ namespace Voting.Web.Api
                 config
                     .ForSingletonOf<ISessionRepository>()
                     .Use<InMemorySessionRepository>();
+                config
+                    .ForSingletonOf<IVoteRepository>()
+                    .Use<InMemoryVoteRepository>();
+                config
+                    .ForSingletonOf<IBallotRepository>()
+                    .Use<HardCodedBallotRepository>();
                 config.ForSingletonOf<InMemoryUserRepository>();
                 config.Forward<InMemoryUserRepository, IUserRepository>();
                 config.Forward<InMemoryUserRepository, IUserAuthenticationService>();
